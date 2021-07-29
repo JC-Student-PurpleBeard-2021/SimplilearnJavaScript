@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+			section {
+				background-color: tomato;
+				margin: 50px;
+				padding: 50px;
+				border-radius: 15px;
+				box-shadow: 3px 3px 3px darkgray;
+				color: white;
+				max-width: 950px;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 50px;
+			}
+			.main {
+				display: flex;
+				justify-content: space-around;
+			}
+			div.pair {
+				float: left;
+			}
+			input {
+				width: 200px;
+				height: 30px;
+				margin: 15px 0px;
+				padding: 3px;
+				border: 1px solid white;
+				border-radius: 5px;
+			}
+			.button {
+				text-align: center;
+			}
+			.button button {
+				background-color: lightgreen;
+				margin-top: 20px;
+				padding: 10px;
+				border-radius: 5px;
+				border: 1px solid lightgreen;
+				cursor: pointer;
+			}
+		</style>
+		<title>Temperature Convertor</title>
+	</head>
+	<body>
+		<section>
+			<h1>Temperature Converter</h1>
+			<div class="main">
+				<div class="pair">
+					<label for="Fahrenheit">Fahrenheit</label><br />
+					<input
+						id="Fahrenheit"
+						name="Fahrenheit"
+						type="number"
+						min="32"
+						oninput="tempConvertF(this.value)"
+						onchange="tempConvertF(this.value)"
+					/>
+				</div>
+				<div class="pair">
+					<label for="Celcius">Celcius</label><br />
+					<input
+						id="Celsius"
+						name="Celsius"
+						type="number"
+						min="0"
+						oninput="tempConvertC(this.value)"
+						onchange="tempConvertC(this.value)"
+					/>
+				</div>
+			</div>
+			<div class="button">
+				<button
+					onclick="document.getElementById('fahrenheitTemp').value = '', 
+							 document.getElementById('celsiusTemp').value = ''"
+				>
+					Reset Temperatures
+				</button>
+			</div>
+		</section>
+		<script>
+			function tempConvertF(NumC) {
+				NumC = parseFloat(NumC);
+				document.getElementById('Celsius').value = (NumC - 32) / 1.8;
+			}
+
+			function tempConvertC(NumF) {
+				NumF = parseFloat(NumF);
+				document.getElementById('Fahrenheit').value = NumF * 1.8 + 32;
+			}
+		</script>
+	</body>
+</html>
